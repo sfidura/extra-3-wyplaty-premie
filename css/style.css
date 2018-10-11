@@ -1,0 +1,44 @@
+*{
+    color: #fff;
+    font-family: "Helvetica"; 
+}
+html, body{
+    margin: 0;
+    padding: 0;
+}
+body{
+    background-color: darkslategrey;
+}
+#pracownicy{
+    width: 50%;
+    position: absolute;
+    top: 2%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+#pracownicy > div{
+    display: flex;
+    justify-content: space-around;
+}
+#tytul-pracownik, #tytul-czas, #tytul-wyplata, #tytul-stawka{
+    flex-basis: 20%;
+    font-size: 1.5rem;
+}
+#tytul-pracownik{
+    flex-basis: 40%;
+}
+.pracownik{
+    flex-basis: 40%;
+}
+
+.czas{
+    flex-basis: 20%;
+    background-color: darkslategrey;
+}
+.stawka{
+    flex-basis: 20%;
+    background-color: darkslategrey;
+}
+.wyplata{
+    flex-basis: 20%;
+}
