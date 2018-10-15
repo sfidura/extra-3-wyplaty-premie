@@ -5,6 +5,7 @@ function calculateSalary() {
     let workersArray = Array.from(workerParentRows);
     //    console.log(workersArray);
 
+    let preBestWorkers = workersArray;
     let bestWorkers = ["pracownik1", "pracownik2", "pracownik3"];
 
     workersArray.forEach(function (element, index) {
@@ -35,51 +36,72 @@ function calculateSalary() {
         }
 
 
+        // Tutaj zaczynam wielkie poszukiwania trzech najlepszych pracowników...
 
-        //        console.log(salary);
-        console.log("Warunek 1");
-        console.log(parseInt(document.getElementById(bestWorkers[0]).children.item(1).value));
-        console.log(parseInt(hours));
-        console.log(parseInt(document.getElementById(bestWorkers[0]).children.item(1).value) + " do " + hours);
-        console.log("Warunek 2");
-        console.log(parseInt(document.getElementById(bestWorkers[1]).children.item(1).value));
-        console.log(parseInt(hours));
-        console.log(parseInt(document.getElementById(bestWorkers[1]).children.item(1).value) + " do " + hours);
-        console.log("Warunek 3");
-        console.log(parseInt(document.getElementById(bestWorkers[2]).children.item(1).value));
-        console.log(parseInt(hours));
-        console.log(parseInt(document.getElementById(bestWorkers[2]).children.item(1).value) + " do " + hours);
-        
-        let n = workersArray.length;
-        
-        for (let i = 0; i < n; i++) {
-            if (parseInt(hours) > parseInt(document.getElementById(bestWorkers[0]).children.item(1).value)) {
-                //            console.log(Number(document.getElementById(bestWorkers[0]).children.item(1).value));
-                //            console.log(hours);
-                console.log("zapis if 1");
-                bestWorkers[0] = element.getAttribute("id");
+        preBestWorkers.forEach(function (element, index) {
+            let hours = document.getElementById(element.getAttribute("id")).children.item(1).value;
 
+            let n = preBestWorkers.length;
 
-            } else if (parseInt(hours) > parseInt(document.getElementById(bestWorkers[1]).children.item(1).value)) {
-                //            console.log(Number(document.getElementById(bestWorkers[1]).children.item(1).value));
-                //            console.log(hours);
-                console.log("zapis if 2");
-                bestWorkers[1] = element.getAttribute("id");
-
-
-            } else if (parseInt(hours) > parseInt(document.getElementById(bestWorkers[2]).children.item(1).value)) {
-                //            console.log(Number(document.getElementById(bestWorkers[2]).children.item(1).value));
-                //            console.log(hours);
-                console.log("zapis if 3");
-                bestWorkers[2] = element.getAttribute("id");
-
+            for (let i = 0; i < n; i++) {
+                if (parseInt(hours) > parseInt(document.getElementById(bestWorkers[0]).children.item(1).value)) {
+                    bestWorkers[0] = element.getAttribute("id");
+                }
             }
+        });
 
-            console.log("==================================================");
-        }
+        preBestWorkers.forEach(function (element, index) {
+            if (element.getAttribute("id") == bestWorkers[0]) {
+                preBestWorkers.splice(index, 1);
+            }
+        });
 
-    })
+        preBestWorkers.forEach(function (element, index) {
+            let hours = document.getElementById(element.getAttribute("id")).children.item(1).value;
+
+            let n = preBestWorkers.length;
+
+            for (let i = 0; i < n; i++) {
+                if (parseInt(hours) > parseInt(document.getElementById(bestWorkers[1]).children.item(1).value)) {
+                    bestWorkers[1] = element.getAttribute("id");
+                }
+            }
+        });
+
+        preBestWorkers.forEach(function (element, index) {
+            if (element.getAttribute("id") == bestWorkers[1]) {
+                preBestWorkers.splice(index, 1);
+            }
+        });
+
+        preBestWorkers.forEach(function (element, index) {
+            let hours = document.getElementById(element.getAttribute("id")).children.item(1).value;
+
+            let n = preBestWorkers.length;
+
+            for (let i = 0; i < n; i++) {
+                if (parseInt(hours) > parseInt(document.getElementById(bestWorkers[2]).children.item(1).value)) {
+                    bestWorkers[2] = element.getAttribute("id");
+                }
+            }
+        });
+
+    });
+
     console.log(bestWorkers);
+    
+    console.log(document.querySelector("div[id=" + bestWorkers[0] +"]").children.item(0).value);
+    
+    /*document.querySelector("h3").insertAdjacentHTML("afterend", "<p>" + document.querySelector("div[id=" + bestWorkers[0] +"]").children.item(0).value + "</p>");*/
+    
+    bestWorkers.forEach(function(element, index){
+        let newP =  document.querySelector("h3").createElement("p");
+        newP = document.createTextNode(document.getElementById(element).children.item(0).value);
+        document.querySelector("h3").parentElement.appendChild(newP);
+    })
 }
+
+
+
 
 document.getElementById("oblicz").addEventListener("click", calculateSalary);
