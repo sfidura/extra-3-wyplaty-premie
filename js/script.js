@@ -88,17 +88,12 @@ function calculateSalary() {
 
     });
 
-    console.log(bestWorkers);
-    
-    console.log(document.querySelector("div[id=" + bestWorkers[0] +"]").children.item(0).value);
-    
-    /*document.querySelector("h3").insertAdjacentHTML("afterend", "<p>" + document.querySelector("div[id=" + bestWorkers[0] +"]").children.item(0).value + "</p>");*/
-    
-    bestWorkers.forEach(function(element, index){
-        let newP =  document.querySelector("h3").createElement("p");
-        newP = document.createTextNode(document.getElementById(element).children.item(0).value);
-        document.querySelector("h3").parentElement.appendChild(newP);
-    })
+    let i = 3;
+    bestWorkers.reverse().forEach(function (element, index) {
+
+        document.querySelector("h3").insertAdjacentHTML("afterend", "<p><strong> Miejsce " + i + " </strong>" + document.querySelector("div[id=" + bestWorkers[index] + "]").children.item(0).innerHTML + "</p>");
+        i--;
+    });
 }
 
 

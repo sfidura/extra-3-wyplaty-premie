@@ -16,7 +16,7 @@ body{
     left: 50%;
     transform: translateX(-50%);
 }
-#pracownicy > div{
+#pracownicy > div[id^="pracownik"], #pracownicy > div[id^="title"]{
     display: flex;
     justify-content: space-around;
 }
@@ -41,4 +41,18 @@ body{
 }
 .wyplata{
     flex-basis: 20%;
+}
+#oblicz{
+    margin: 20px 0;
+    width: 100%;
+    font-size: 1.5rem;
+    background-color: forestgreen;
+    padding: 20px 0;
+    text-align: center;
+}
+p{
+    width: 100%;
+    background-color: cornflowerblue;
+    text-align: center;
+    padding: 20px 0;
 }
