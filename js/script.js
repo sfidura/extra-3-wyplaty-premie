@@ -34,7 +34,7 @@ function calculateSalary() {
             document.getElementById(element.getAttribute("id")).children.item(1).style.backgroundColor = "red";
             document.getElementById(element.getAttribute("id")).children.item(2).style.backgroundColor = "red";
         }
-
+ });
 
         // Tutaj zaczynam wielkie poszukiwania trzech najlepszych pracowników...
 
@@ -86,7 +86,7 @@ function calculateSalary() {
             }
         });
 
-    });
+   
 
     let i = 3;
     bestWorkers.reverse().forEach(function (element, index) {
