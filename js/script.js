@@ -100,3 +100,4 @@ function calculateSalary() {
 
 
 document.getElementById("oblicz").addEventListener("click", calculateSalary);
+console.log("version 2.0");
